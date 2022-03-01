@@ -1,0 +1,19 @@
+.container {
+    text-align: center;
+    width: min(1000px, 80%);
+    margin-inline: auto;
+    & h1 {
+        color: var(--text-primary);
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 4rem;
+        & span {
+            background-image: linear-gradient(90deg, #7EFCC4, #AAB2FF, #ECA0FF);
+            background-clip: text;
+            color: transparent;
+        }
+    }
+}
+
+@media (max-width: 1048px) {
+    .container h1 { font-size: 3rem; }
+}
