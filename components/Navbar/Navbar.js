@@ -1,8 +1,8 @@
-import styles from './Navbar.module.scss'
+import styles from './NavBar.module.scss'
 import Image from 'next/image';
 import React from 'react';
 
-export const Navbar = () => {
+export const NavBar = () => {
     return (
         <div className={styles.container}>
             <a href="#">Log in</a>
