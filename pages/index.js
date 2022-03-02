@@ -1,7 +1,5 @@
 import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.scss'
-import { NavBar } from '../components'
+import { NavBar, Layout } from '../components'
 
 export default function Home() {
   return (
@@ -12,9 +10,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <NavBar />
-      <div className={styles.container}>
-        <h1>Don&apos;t lose your precious <span>easings</span> ever again</h1>
-      </div>
+      <Layout />
     </>
   )
 }
+  
