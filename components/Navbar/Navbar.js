@@ -2,8 +2,7 @@ import styles from './Navbar.module.scss'
 import Image from 'next/image';
 import React from 'react';
 
-
-const Navbar = () => {
+export const Navbar = () => {
     return (
         <div className={styles.container}>
             <a href="#">Log in</a>
@@ -14,5 +13,3 @@ const Navbar = () => {
         </div>
     );
 }
-
-export default Navbar;
