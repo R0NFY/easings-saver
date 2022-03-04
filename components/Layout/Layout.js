@@ -1,5 +1,6 @@
 import styles from './Layout.module.scss'
 import Image from 'next/image';
+import NewEasing from '../NewEasing/NewEasing';
 
 export const Layout = () => {
     return (
@@ -8,7 +9,7 @@ export const Layout = () => {
             <div className={styles.image}>
                 <Image src='/illustration.svg' alt='Bench and trees' width={478} height={260} />
             </div>
-            <h2>Add your first easing</h2>
+            <NewEasing />
         </div>
     );
   }

@@ -1,9 +1,10 @@
 .container {
-    --layout-gap: 2.75rem; 
     text-align: center;
-    width: min(1000px, 80%);
-    margin-inline: auto;
+    width: min(900px, 80%);
     margin-top: 1.75rem;
+    display: grid;
+    margin-inline: auto;
+    justify-items: center;
 
     & h1 {
         font-family: 'Encode Sans', sans-serif;
@@ -14,16 +15,10 @@
             color: transparent;
         }
     }
-
-    & h2 {
-        margin-top: var(--layout-gap);
-        font-weight: 600;
-        font-size: 2.75rem;
-    }
 }
 
 .image {
-    margin-top: var(--layout-gap);
+    margin-top: 3rem;
 }
 
 @media (max-width: 1048px) {
