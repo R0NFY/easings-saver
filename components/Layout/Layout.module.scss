@@ -21,6 +21,13 @@
     margin-top: 3rem;
 }
 
-@media (max-width: 1048px) {
-    .container h1 { font-size: 3rem; }
+@media (max-width: 768px) {
+    .image { margin-top: 2rem; }
+    .container h1 { font-size: 2.5rem; }
+}
+
+@media (max-width: 532px) {
+    .image { margin-top: 1.5rem; }
+    .container { margin-top: 2.25rem; width: 90%; }
+    .container h1 { font-size: 2.25rem; }
 }
