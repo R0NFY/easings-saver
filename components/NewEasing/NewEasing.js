@@ -12,7 +12,7 @@ const NewEasing = () => {
                     </label>
                 </div>
                 <form className={styles.form} onSubmit={(e) => e.preventDefault()}>
-                    <input className={styles.coordinates} placeholder="x1, y1, x2, y2" type="text" />
+                    <input className={styles.coordinatesInput} placeholder="x1, y1, x2, y2" type="text" />
                     <button>Save</button>
                 </form>
             </div>
