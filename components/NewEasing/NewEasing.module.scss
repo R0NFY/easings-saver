@@ -1,5 +1,5 @@
 .container {
-    height: 140px;
+    height: 128px;
     width: min(324px, 100%);
     box-shadow: var(--tile-shadow);
     border-radius: 1.5rem;
@@ -9,7 +9,7 @@
 }
 
 .contentWrapper {
-    width: 80%;
+    width: 85%;
     margin-inline: auto;
     font-weight: 400;
     font-size: 18px;
@@ -65,19 +65,35 @@
     }
 }
 
+.form {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: .75rem;
+}
+
+.coordinatesContainer {
+    width: min(180px, 70%);
+    position: relative;
+}
+
 .coordinatesInput {
-    border: 2px solid #EBEBEB;
-    transition: 150ms ease;
+    width: 100%;
+    font-size: 1rem;
+    padding-inline: .25rem;
+    border: none;
     outline: none;
     height: 40px;
-    width: min(186px, 70%);
-    border-radius: .5rem;
-    padding-inline: .5rem;
-    font-size: 1rem;
-    caret-color: var(--text-primary);
+    color: var(--text-primary);
 
-    &:focus {
-        border: 2px solid var(--placeholder-text);
+    &:focus + .inputUnderline {
+        background-color: #C9C9C9;
+        transform: translateY(4px);
+    }
+
+    &:not(:placeholder-shown) + .inputUnderline {
+        background-color: #C9C9C9;
     }
 
     &::placeholder {
@@ -85,11 +101,15 @@
     }
 }
 
-.form {
-    display: flex;
-    align-items: flex-end;
-    gap: 12px;
-    margin-top: 1rem;
+.inputUnderline {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    background-color: #EBEBEB;
+    height: 3px;
+    border-radius: 1rem;
+    transition: 150ms ease; 
 }
 
 .form button {
