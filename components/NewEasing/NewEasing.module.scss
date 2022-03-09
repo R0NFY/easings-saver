@@ -1,3 +1,23 @@
+@property --rotate {
+    syntax: '<angle>';
+    inherits: false;
+    initial-value: 135deg;
+}
+
+@property --first-color {
+    syntax: '<color>';
+    inherits: false;
+    initial-value: #D2DCFE;
+}
+
+@property --second-color {
+    syntax: '<color>';
+    inherits: false;
+    initial-value: #CFC1EB;
+}
+
+$title-animation-timing: 300ms;
+
 .container {
     height: 128px;
     width: min(324px, 100%);
@@ -21,15 +41,16 @@
 .titleWrapper {
     display: flex;
     position: relative;
+
     & input {
         width: 6.375rem;
         border: none;
         outline: none;
-        transition: 250ms ease;
+        transition: $title-animation-timing ease-in-out;
         font-size: inherit;
         color: var(--text-primary);
         caret-color: var(--text-primary);
-        
+
         &::placeholder {
             color: var(--placeholder-text);
         }
@@ -39,26 +60,26 @@
         width: 100%;
     }
 
-    & input:focus + .editIcon {
+    & input:focus+.editIcon {
         opacity: 0;
-        
+
     }
 
     & input:not(:placeholder-shown) {
         width: 100%;
 
-        & + .editIcon {
+        &+.editIcon {
             opacity: 0;
         }
     }
 
-    /* Do you still have doubts that CSS is a programming language? */ 
+    /* Do you still have doubts that CSS is a programming language? */
 }
 
 .editIcon {
     display: flex;
     align-items: center;
-    transition: 250ms ease;
+    transition: $title-animation-timing ease-in-out;
 
     &:hover {
         cursor: text;
@@ -87,13 +108,9 @@
     height: 40px;
     color: var(--text-primary);
 
-    &:focus + .inputUnderline {
+    &:focus+.inputUnderline {
         background-color: #C9C9C9;
         transform: translateY(4px);
-    }
-
-    &:not(:placeholder-shown) + .inputUnderline {
-        background-color: #C9C9C9;
     }
 
     &::placeholder {
@@ -109,10 +126,13 @@
     background-color: #EBEBEB;
     height: 3px;
     border-radius: 1rem;
-    transition: 150ms ease; 
+    transition: 250ms ease-in-out;
 }
 
 .form button {
+    --rotate: 135deg;
+    --first-color: #D2DCFE;
+    --second-color: #CFC1EB;
     font-size: inherit;
     font-weight: 500;
     color: white;
@@ -120,9 +140,14 @@
     outline: none;
     padding: 8px 18px;
     border-radius: 8px;
-    background-image: linear-gradient(135deg, #D2DCFE, #CFC1EB);
+    background-image: linear-gradient(var(--rotate), var(--first-color), var(--second-color));
+    transition: --rotate 500ms ease-in-out, --first-color 500ms ease-in-out, --second-color 500ms ease-in-out;
 
-    &:hover {
+    &:hover,
+    &:focus {
         cursor: pointer;
+        --rotate: 180deg;
+        --first-color: #D7E0FE;
+        --second-color: #DBD1F0;
     }
 }
