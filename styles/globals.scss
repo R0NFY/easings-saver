@@ -21,7 +21,7 @@ a {
   font-family: inherit;
 
   &::selection {
-    color: #fff;
+    color: var(--text-primary);
     background-color: #E5DDFD;
   }
 }

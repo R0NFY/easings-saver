@@ -28,6 +28,50 @@ $title-animation-timing: 300ms;
     --placeholder-text: #B4B4B4;
 }
 
+.easingContainer {
+    @extend .container;
+    height: 200px;
+    position: relative;
+    text-align: start;
+}
+
+.easingContentWrapper {
+    width: 80%;
+    margin-inline: auto;
+
+    &>p:first-child {
+        margin-top: 1.5rem;
+        font-size: 18px;
+    }
+
+    &>svg {
+        margin-block: 1rem;
+        display: block;
+
+        &>path {
+            stroke-width: 6px;
+            stroke-linecap: round;
+            fill: none;
+            stroke: url(#easingGradient);
+        }
+    }
+}
+
+.bottomRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &>p {
+        font-size: 18px;
+        font-weight: 500;
+    }
+}
+
+.deleteBtn:hover {
+    cursor: pointer;
+}
+
 .contentWrapper {
     width: 85%;
     margin-inline: auto;
@@ -86,7 +130,7 @@ $title-animation-timing: 300ms;
     }
 }
 
-.form {
+.row {
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
@@ -129,7 +173,7 @@ $title-animation-timing: 300ms;
     transition: 250ms ease-in-out;
 }
 
-.form button {
+.row button {
     --rotate: 135deg;
     --first-color: #D2DCFE;
     --second-color: #CFC1EB;
@@ -143,6 +187,11 @@ $title-animation-timing: 300ms;
     background-image: linear-gradient(var(--rotate), var(--first-color), var(--second-color));
     transition: --rotate 500ms ease-in-out, --first-color 500ms ease-in-out, --second-color 500ms ease-in-out;
 
+    &::selection {
+        color: #fff;
+        background-color: #E5DDFD;
+    }
+
     &:hover,
     &:focus {
         cursor: pointer;
@@ -150,4 +199,8 @@ $title-animation-timing: 300ms;
         --first-color: #D7E0FE;
         --second-color: #DBD1F0;
     }
+}
+
+.renderedCords {
+    font-weight: 700;
 }
