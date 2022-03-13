@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { useState } from 'react';
-import styles from '../Shared/Easings.module.scss'
+import styles from './Easings.module.scss'
 import { nanoid } from 'nanoid'
 
 export const NewEasing = (props) => {

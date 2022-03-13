@@ -1,4 +1,4 @@
-import styles from '../Shared/Easings.module.scss'
+import styles from './Easings.module.scss'
 import Image from 'next/image';
 
 export const Easing = ({title, cords, id, deleteEasing}) => {

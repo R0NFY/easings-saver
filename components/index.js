@@ -1,4 +1,4 @@
 export { NavBar } from './NavBar/NavBar'
 export { Layout } from './Layout/Layout'
-export { NewEasing } from './NewEasing/NewEasing'
-export { Easing } from './Easing/Easing'
+export { NewEasing } from './Easings/NewEasing'
+export { Easing } from './Easings/Easing'
