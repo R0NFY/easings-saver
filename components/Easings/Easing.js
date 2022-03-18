@@ -3,6 +3,8 @@ import Image from 'next/image';
 
 export const Easing = ({title, cords, id, deleteEasing}) => {
 
+    cords = cords.map(el => parseFloat(el))
+
     const renderedCords = cords.join(', ')
 
     const ew = 200 // easing width
@@ -20,9 +22,9 @@ export const Easing = ({title, cords, id, deleteEasing}) => {
 
         return `${start}, ${path}, ${end}`
     }
-    
+
     return (
-        <div className={styles.easingContainer}>
+        <div id={id} className={styles.easingContainer}>
             <div className={styles.easingContentWrapper}>
                 <p>{title}</p>
                 <svg width="200" height="80" viewBox="0 0 200 80">
@@ -37,7 +39,7 @@ export const Easing = ({title, cords, id, deleteEasing}) => {
                 </svg>
                 <div className={styles.bottomRow}>
                     <p>{renderedCords}</p>
-                    <Image className={styles.deleteBtn} onClick={() => deleteEasing(id)} src="/delete-icon.svg" width="24" height="24" alt="trash icon" />
+                    <Image className={styles.deleteBtn} onClick={() => deleteEasing(id)} src="/delete-icon.svg" width={20} height={20} alt="trash icon" />
                 </div>
             </div>
         </div>

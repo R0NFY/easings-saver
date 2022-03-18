@@ -1,10 +1,12 @@
 import styles from './Layout.module.scss'
 import Image from 'next/image'
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { NewEasing, Easing } from '../index.js'
 
 export const Layout = () => {
     const [easings, setEasings] = useState('')
+
+    const isMounted = useRef(false)
 
     const addEasing = easingData => setEasings([...easings, easingData])
 
@@ -12,6 +14,20 @@ export const Layout = () => {
         const remainingEasings = easings.filter(easing => id !== easing.id)
         setEasings(remainingEasings)
     }
+
+    useEffect(() => {
+        if (isMounted.current) {
+            localStorage.setItem('easings', JSON.stringify(easings))
+        }
+        else {
+            const localData = localStorage.getItem('easings')
+
+            const localEasings = JSON.parse(localData)
+
+            setEasings(localEasings)
+            isMounted.current = true
+        }
+    }, [easings]);
 
     const renderEasings = easings && easings.map((easing) => 
         <Easing title={easing.title} cords={easing.cords} id={easing.id} key={easing.id} deleteEasing={deleteEasing} />

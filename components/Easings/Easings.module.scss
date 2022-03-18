@@ -16,7 +16,7 @@
     initial-value: #CFC1EB;
 }
 
-$title-animation-timing: 300ms;
+$title-animation-timing: 400ms;
 
 .container {
     height: 128px;
@@ -26,6 +26,10 @@ $title-animation-timing: 300ms;
     margin-top: 2rem;
 
     --placeholder-text: #B4B4B4;
+
+    &:last-child {
+        margin-bottom: 2rem;
+    }
 }
 
 .easingContainer {
@@ -38,6 +42,11 @@ $title-animation-timing: 300ms;
 .easingContentWrapper {
     width: 80%;
     margin-inline: auto;
+    overflow: hidden;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
 
     &>p:first-child {
         margin-top: 1.5rem;
@@ -141,6 +150,20 @@ $title-animation-timing: 300ms;
 .coordinatesContainer {
     width: min(180px, 70%);
     position: relative;
+    display: grid;
+    align-items: center;
+}
+
+.success {
+    position: absolute;
+    right: 0;
+    opacity: 0;
+    transition: opacity 150ms ease-in-out;
+    transform: translateY(2px);
+}
+
+.show {
+    opacity: 1;
 }
 
 .coordinatesInput {
@@ -152,9 +175,13 @@ $title-animation-timing: 300ms;
     height: 40px;
     color: var(--text-primary);
 
-    &:focus+.inputUnderline {
+    &:placeholder-shown~.success {
+        opacity: 0 !important;
+    }
+
+    &:focus~.inputUnderline {
         background-color: #C9C9C9;
-        transform: translateY(4px);
+        transform: translateY(6px);
     }
 
     &::placeholder {
@@ -203,4 +230,8 @@ $title-animation-timing: 300ms;
 
 .renderedCords {
     font-weight: 700;
+}
+
+.error {
+    margin-top: 1rem;
 }

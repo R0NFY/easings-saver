@@ -7,6 +7,11 @@ html,
 body {
   font-family: 'DM Sans', sans-serif;
   color: var(--text-primary);
+  scroll-behavior: smooth;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 a {
