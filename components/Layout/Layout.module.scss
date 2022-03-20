@@ -1,3 +1,7 @@
+@import '../../styles/mixins';
+
+@include gradient-animation-props;
+
 .container {
     text-align: center;
     width: min(900px, 80%);
@@ -9,25 +13,64 @@
     & h1 {
         font-family: 'Encode Sans', sans-serif;
         font-size: 4rem;
+        transition: 250ms ease-in-out;
+
         & span {
             background-image: linear-gradient(90deg, #7EFCC4, #AAB2FF, #ECA0FF);
             background-clip: text;
             color: transparent;
         }
     }
+
+    & .smallHeading {
+        font-size: 3rem;
+        max-width: 20ch;
+    }
 }
 
 .image {
     margin-top: 3rem;
+    position: relative;
+}
+
+.btnWrapper {
+    width: 324px;
+    margin-inline: auto;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.addNew {
+    margin-top: 2.5rem;
+    @include gradient-button;
 }
 
 @media (max-width: 768px) {
-    .image { margin-top: 2rem; }
-    .container h1 { font-size: 2.5rem; }
+    .image {
+        margin-top: 2rem;
+    }
+
+    .container h1 {
+        font-size: 3rem;
+    }
+
+    .container .smallHeading {
+        font-size: 2.75rem;
+    }
 }
 
 @media (max-width: 532px) {
-    .image { margin-top: 1.5rem; }
-    .container { margin-top: 2.25rem; width: 90%; }
-    .container h1 { font-size: 2.25rem; }
+    .image {
+        margin-top: 1.5rem;
+    }
+
+    .container {
+        margin-top: 2.25rem;
+        width: 90%;
+    }
+
+    .container h1,
+    .container .smallHeading {
+        font-size: 2.25rem;
+    }
 }

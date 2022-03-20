@@ -1,0 +1,49 @@
+@mixin gradient-animation-props {
+    @property --rotate {
+        syntax: '<angle>';
+        inherits: false;
+        initial-value: 135deg;
+    }
+
+    @property --first-color {
+        syntax: '<color>';
+        inherits: false;
+        initial-value: #D2DCFE;
+    }
+
+    @property --second-color {
+        syntax: '<color>';
+        inherits: false;
+        initial-value: #CFC1EB;
+    }
+}
+
+@mixin gradient-button {
+    --rotate: 135deg;
+    --first-color: #D2DCFE;
+    --second-color: #CFC1EB;
+    font-size: inherit;
+    font-weight: 500;
+    color: white;
+    border: none;
+    outline: none;
+    padding: 8px 18px;
+    border-radius: 8px;
+    background-image: linear-gradient(var(--rotate), var(--first-color), var(--second-color));
+    transition: --rotate 500ms ease-in-out,
+        --first-color 500ms ease-in-out,
+        --second-color 500ms ease-in-out;
+
+    &::selection {
+        color: #fff;
+        background-color: #E5DDFD;
+    }
+
+    &:hover,
+    &:focus {
+        cursor: pointer;
+        --rotate: 180deg;
+        --first-color: #D7E0FE;
+        --second-color: #DBD1F0;
+    }
+}

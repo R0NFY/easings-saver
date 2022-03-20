@@ -3,7 +3,7 @@ import { useState } from 'react';
 import styles from './Easings.module.scss'
 import { nanoid } from 'nanoid'
 
-export const NewEasing = (props) => {
+export const NewEasing = ({addEasing, popup, hidePopup}) => {
 
     const [title, setTitle] = useState('')
     const [cords, setCords] = useState('')
@@ -47,7 +47,7 @@ export const NewEasing = (props) => {
         }
 
         if (isValid) {
-            props.addEasing({title: title.trim(), cords: updatedCords, id: nanoid()})
+            addEasing({title: title.trim(), cords: updatedCords, id: nanoid()})
             setErr(false)
     
             setTitle('')
@@ -57,7 +57,7 @@ export const NewEasing = (props) => {
 
     return (
         <>
-        <div className={styles.container}>
+        <div className={`${styles.container} ${popup ? styles.popup : ''}`}>
             <form onSubmit={(e) => saveEasing(e)} className={styles.contentWrapper}>
                 <div className={styles.titleWrapper}>
                     <input value={title} onInput={(el) => setTitle(el.target.value)} id="easingTitle" type="text" placeholder="First easing" spellCheck='false' autoComplete='off' />
@@ -77,6 +77,7 @@ export const NewEasing = (props) => {
                 </section>
             </form>
         </div>
+        <div onClick={() => hidePopup()} className={`${styles.overlay} ${popup ? styles.overlayVisible : ''}`}></div>
         {err && <p className={styles.error}>Looks like we can&apos;t draw with these coordinates yet :(</p>}
         </>
     );

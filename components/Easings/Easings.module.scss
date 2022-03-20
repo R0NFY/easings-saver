@@ -1,20 +1,6 @@
-@property --rotate {
-    syntax: '<angle>';
-    inherits: false;
-    initial-value: 135deg;
-}
+@import '../../styles/mixins';
 
-@property --first-color {
-    syntax: '<color>';
-    inherits: false;
-    initial-value: #D2DCFE;
-}
-
-@property --second-color {
-    syntax: '<color>';
-    inherits: false;
-    initial-value: #CFC1EB;
-}
+@include gradient-animation-props;
 
 $title-animation-timing: 400ms;
 
@@ -24,12 +10,21 @@ $title-animation-timing: 400ms;
     box-shadow: var(--tile-shadow);
     border-radius: 1.5rem;
     margin-top: 2rem;
-
     --placeholder-text: #B4B4B4;
 
     &:last-child {
         margin-bottom: 2rem;
     }
+}
+
+.popup {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 200;
+    background-color: white;
+    margin-top: 0;
 }
 
 .easingContainer {
@@ -201,31 +196,7 @@ $title-animation-timing: 400ms;
 }
 
 .row button {
-    --rotate: 135deg;
-    --first-color: #D2DCFE;
-    --second-color: #CFC1EB;
-    font-size: inherit;
-    font-weight: 500;
-    color: white;
-    border: none;
-    outline: none;
-    padding: 8px 18px;
-    border-radius: 8px;
-    background-image: linear-gradient(var(--rotate), var(--first-color), var(--second-color));
-    transition: --rotate 500ms ease-in-out, --first-color 500ms ease-in-out, --second-color 500ms ease-in-out;
-
-    &::selection {
-        color: #fff;
-        background-color: #E5DDFD;
-    }
-
-    &:hover,
-    &:focus {
-        cursor: pointer;
-        --rotate: 180deg;
-        --first-color: #D7E0FE;
-        --second-color: #DBD1F0;
-    }
+    @include gradient-button;
 }
 
 .renderedCords {
@@ -234,4 +205,18 @@ $title-animation-timing: 400ms;
 
 .error {
     margin-top: 1rem;
+}
+
+.overlay {
+    position: absolute;
+    z-index: -100;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.125);
+    opacity: 0;
+    transition: opacity 200ms ease-in-out;
+}
+
+.overlayVisible {
+    z-index: 100;
+    opacity: 1;
 }
