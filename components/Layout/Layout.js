@@ -41,6 +41,7 @@ export const Layout = () => {
         } else {
             setNoEasings(false)
         }
+
     }, [easings]);
 
     const renderEasings = easings && easings.map((easing) => 

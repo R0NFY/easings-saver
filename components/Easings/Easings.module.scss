@@ -98,29 +98,8 @@ $title-animation-timing: 400ms;
         width: 100%;
     }
 
-    & input:focus+.editIcon {
-        opacity: 0;
-
-    }
-
     & input:not(:placeholder-shown) {
         width: 100%;
-
-        &+.editIcon {
-            opacity: 0;
-        }
-    }
-
-    /* Do you still have doubts that CSS is a programming language? */
-}
-
-.editIcon {
-    display: flex;
-    align-items: center;
-    transition: $title-animation-timing ease-in-out;
-
-    &:hover {
-        cursor: text;
     }
 }
 

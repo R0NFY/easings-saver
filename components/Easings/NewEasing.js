@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import styles from './Easings.module.scss'
 import { nanoid } from 'nanoid'
 
@@ -9,6 +9,8 @@ export const NewEasing = ({addEasing, popup, hidePopup}) => {
     const [cords, setCords] = useState('')
     const [err, setErr] = useState(false) 
     const [valid, setValid] = useState(false)
+
+    const titleRef = useRef(null)
 
     const validateRegex = /^(((0(\.\d+)?|1(\.0+)?)|\.(\d+))((\s)|(,\s?))){3}((0(\.\d+)?|1(\.0+)?)|\.(\d+))$/
 
@@ -55,15 +57,16 @@ export const NewEasing = ({addEasing, popup, hidePopup}) => {
         }
     }
 
+    useEffect(() => {
+        titleRef.current.focus()
+    }, []);
+
     return (
         <>
         <div className={`${styles.container} ${popup ? styles.popup : ''}`}>
             <form onSubmit={(e) => saveEasing(e)} className={styles.contentWrapper}>
                 <div className={styles.titleWrapper}>
-                    <input value={title} onInput={(el) => setTitle(el.target.value)} id="easingTitle" type="text" placeholder="First easing" spellCheck='false' autoComplete='off' />
-                    <label className={styles.editIcon} htmlFor="easingTitle">
-                        <Image src="/edit-icon.svg" width={16} height={16} alt="edit icon" />
-                    </label>
+                    <input ref={titleRef} value={title} onInput={(el) => setTitle(el.target.value)} id="easingTitle" type="text" placeholder="First easing" spellCheck='false' autoComplete='off' />
                 </div>
                 <section className={styles.row}>
                     <div className={styles.coordinatesContainer}>
