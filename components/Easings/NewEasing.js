@@ -2,9 +2,10 @@ import Image from 'next/image';
 import { useState, useRef, useEffect } from 'react';
 import styles from './Easings.module.scss'
 import { nanoid } from 'nanoid'
+import { motion } from 'framer-motion'
+import { newEasingVariants } from '../../animations/animations'
 
 export const NewEasing = ({addEasing, popup, hidePopup}) => {
-
     const [title, setTitle] = useState('')
     const [cords, setCords] = useState('')
     const [err, setErr] = useState(false) 
@@ -59,11 +60,11 @@ export const NewEasing = ({addEasing, popup, hidePopup}) => {
 
     useEffect(() => {
         titleRef.current.focus()
-    }, []);
+    }, [popup]);
 
     return (
         <>
-        <div className={`${styles.container} ${popup ? styles.popup : ''}`}>
+        <motion.div className={`${styles.container} ${popup ? styles.popup : ''}`} animate="visible" variants={newEasingVariants} initial="hidden">
             <form onSubmit={(e) => saveEasing(e)} className={styles.contentWrapper}>
                 <div className={styles.titleWrapper}>
                     <input ref={titleRef} value={title} onInput={(el) => setTitle(el.target.value)} id="easingTitle" type="text" placeholder="First easing" spellCheck='false' autoComplete='off' />
@@ -79,9 +80,9 @@ export const NewEasing = ({addEasing, popup, hidePopup}) => {
                     <button type="submit">Save</button>
                 </section>
             </form>
-        </div>
-        <div onClick={() => hidePopup()} className={`${styles.overlay} ${popup ? styles.overlayVisible : ''}`}></div>
         {err && <p className={styles.error}>Looks like we can&apos;t draw with these coordinates yet :(</p>}
+        </motion.div>
+        <div onClick={() => hidePopup()} className={`${styles.overlay} ${popup ? styles.overlayVisible : ''}`}></div>
         </>
     );
 }

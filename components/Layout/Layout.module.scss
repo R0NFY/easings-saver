@@ -13,7 +13,7 @@
     & h1 {
         font-family: 'Encode Sans', sans-serif;
         font-size: 4rem;
-        transition: 250ms ease-in-out;
+        margin-inline: auto;
 
         & span {
             background-image: linear-gradient(90deg, #7EFCC4, #AAB2FF, #ECA0FF);
@@ -62,6 +62,7 @@
 @media (max-width: 532px) {
     .image {
         margin-top: 1.5rem;
+        width: 90%;
     }
 
     .container {

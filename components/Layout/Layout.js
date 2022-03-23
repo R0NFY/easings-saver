@@ -2,6 +2,8 @@ import styles from './Layout.module.scss'
 import Image from 'next/image'
 import { useState, useEffect, useRef } from 'react'
 import { NewEasing, Easing } from '../index.js'
+import { motion } from 'framer-motion'
+import { headingVariants, fadeInVariants } from '../../animations/animations'
 
 export const Layout = () => {
     const [easings, setEasings] = useState('')
@@ -11,9 +13,11 @@ export const Layout = () => {
     const isMounted = useRef(false)
 
     const addEasing = easingData => {
-        setEasings([...easings, easingData])
+        easings ? setEasings([...easings, easingData]) : setEasings([easingData])
         setShowNewEasing(false)
     }
+
+    console.log(easings);
 
     const deleteEasing = id => {
         const remainingEasings = easings.filter(easing => id !== easing.id)
@@ -36,7 +40,7 @@ export const Layout = () => {
             isMounted.current = true
         }
 
-        if (!easings.length) {
+        if (!easings?.length) {
             setNoEasings(true)
         } else {
             setNoEasings(false)
@@ -50,11 +54,11 @@ export const Layout = () => {
 
     return (
         <div className={styles.container}>
-            <h1 className={`${!noEasings ? styles.smallHeading : ''}`}>Don&apos;t lose your precious <span>easings</span> ever again</h1>
+            <motion.h1 className={`${!noEasings ? styles.smallHeading : ''}`} initial="hidden" animate="visible" variants={headingVariants}>Don&apos;t lose your precious <span>easings</span> ever again</motion.h1>
             {noEasings && 
-            <div className={styles.image}>
+            <motion.div animate="visible" initial="hidden" variants={fadeInVariants} className={styles.image}>
                 <Image src='/illustration.svg' alt='Bench and trees' width={478} height={260} />
-            </div>
+            </motion.div>
             }
             {!noEasings && 
                 <div className={styles.btnWrapper}><button onClick={() => setShowNewEasing(true)} className={styles.addNew}>Add new</button></div>

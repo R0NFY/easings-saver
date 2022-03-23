@@ -173,14 +173,18 @@ $title-animation-timing: 400ms;
 }
 
 .error {
-    margin-top: 1rem;
+    position: absolute;
+    margin-top: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: fit-content;
 }
 
 .popup {
     position: fixed;
     left: 50%;
     top: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) !important;
     z-index: 200;
     background-color: white;
     margin-top: 0;
