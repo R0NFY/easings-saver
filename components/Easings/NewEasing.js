@@ -2,8 +2,8 @@ import Image from 'next/image';
 import { useState, useRef, useEffect } from 'react';
 import styles from './Easings.module.scss'
 import { nanoid } from 'nanoid'
-import { motion } from 'framer-motion'
-import { newEasingVariants } from '../../animations/animations'
+import { AnimatePresence, motion } from 'framer-motion'
+import { newEasingDefaultVariants, newEasingPopupVariants, overlay } from '../../animations/animations'
 
 export const NewEasing = ({addEasing, popup, hidePopup}) => {
     const [title, setTitle] = useState('')
@@ -64,12 +64,12 @@ export const NewEasing = ({addEasing, popup, hidePopup}) => {
 
     return (
         <>
-        <motion.div className={`${styles.container} ${popup ? styles.popup : ''}`} animate="visible" variants={newEasingVariants} initial="hidden">
-            <form onSubmit={(e) => saveEasing(e)} className={styles.contentWrapper}>
+        <motion.div layout className={`${styles.newEasingContainer} ${popup ? styles.popup : ''}`} variants={popup ? newEasingPopupVariants : newEasingDefaultVariants} animate="visible" initial="hidden" exit="exit">
+            <form onSubmit={(e) => saveEasing(e)} className={styles.newEasingContentWrapper}>
                 <div className={styles.titleWrapper}>
                     <input ref={titleRef} value={title} onInput={(el) => setTitle(el.target.value)} id="easingTitle" type="text" placeholder="First easing" spellCheck='false' autoComplete='off' />
                 </div>
-                <section className={styles.row}>
+                <section className={styles.newEasingSection}>
                     <div className={styles.coordinatesContainer}>
                         <input value={cords} onInput={(el) => showSuccess(el)} className={styles.coordinatesInput} placeholder="x1 y1 x2 y2" spellCheck='false' autoComplete='off' />
                         <div className={`${styles.success} ${valid ? styles.show : ''}`}>
@@ -82,7 +82,7 @@ export const NewEasing = ({addEasing, popup, hidePopup}) => {
             </form>
         {err && <p className={styles.error}>Looks like we can&apos;t draw with these coordinates yet :(</p>}
         </motion.div>
-        <div onClick={() => hidePopup()} className={`${styles.overlay} ${popup ? styles.overlayVisible : ''}`}></div>
+            {popup && <motion.div animate="visible" initial="hidden" exit="exit" variants={overlay} onClick={() => hidePopup()} className={styles.overlay}></motion.div>}
         </>
     );
 }

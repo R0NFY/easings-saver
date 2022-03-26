@@ -1,5 +1,7 @@
 import styles from './Easings.module.scss'
 import Image from 'next/image';
+import { motion } from 'framer-motion';
+import { easingDefaultVariants } from '../../animations/animations'
 
 export const Easing = ({title, cords, id, deleteEasing}) => {
 
@@ -24,7 +26,7 @@ export const Easing = ({title, cords, id, deleteEasing}) => {
     }
 
     return (
-        <div id={id} className={styles.easingContainer}>
+        <motion.div layout animate="visible" initial="hidden" exit="exit" transition={easingDefaultVariants.transition} variants={easingDefaultVariants} id={id} className={styles.easingContainer}>
             <div className={styles.easingContentWrapper}>
                 <p>{title}</p>
                 <svg width="200" height="80" viewBox="0 0 200 80">
@@ -37,11 +39,11 @@ export const Easing = ({title, cords, id, deleteEasing}) => {
                         </linearGradient>
                     </defs>
                 </svg>
-                <div className={styles.bottomRow}>
+                <div className={styles.easingBottomSection}>
                     <p>{renderedCords}</p>
                     <Image className={styles.deleteBtn} onClick={() => deleteEasing(id)} src="/delete-icon.svg" width={20} height={20} alt="trash icon" />
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 }

@@ -4,7 +4,7 @@
 
 $title-animation-timing: 400ms;
 
-.container {
+.newEasingContainer {
     height: 128px;
     width: min(324px, 100%);
     box-shadow: var(--tile-shadow);
@@ -17,8 +17,18 @@ $title-animation-timing: 400ms;
     }
 }
 
+.newEasingContentWrapper {
+    width: 85%;
+    margin-inline: auto;
+    font-weight: 400;
+    font-size: 18px;
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
 .easingContainer {
-    @extend .container;
+    @extend .newEasingContainer;
     height: 200px;
     position: relative;
     text-align: start;
@@ -51,7 +61,7 @@ $title-animation-timing: 400ms;
     }
 }
 
-.bottomRow {
+.easingBottomSection {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -64,16 +74,6 @@ $title-animation-timing: 400ms;
 
 .deleteBtn:hover {
     cursor: pointer;
-}
-
-.contentWrapper {
-    width: 85%;
-    margin-inline: auto;
-    font-weight: 400;
-    font-size: 18px;
-    margin-top: 1.5rem;
-    display: flex;
-    flex-direction: column;
 }
 
 .titleWrapper {
@@ -103,7 +103,7 @@ $title-animation-timing: 400ms;
     }
 }
 
-.row {
+.newEasingSection {
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
@@ -164,7 +164,7 @@ $title-animation-timing: 400ms;
     transition: 250ms ease-in-out;
 }
 
-.row button {
+.newEasingSection button {
     @include gradient-button;
 }
 
@@ -182,9 +182,8 @@ $title-animation-timing: 400ms;
 
 .popup {
     position: fixed;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%) !important;
+    inset: 0;
+    margin: auto !important;
     z-index: 200;
     background-color: white;
     margin-top: 0;
@@ -192,15 +191,13 @@ $title-animation-timing: 400ms;
 
 .overlay {
     position: fixed;
-    z-index: -100;
+    z-index: 100;
     height: 100%;
     inset: 0;
     background-color: rgba(0, 0, 0, 0.125);
-    opacity: 0;
-    transition: opacity 200ms ease-in-out;
-}
-
-.overlayVisible {
-    z-index: 100;
     opacity: 1;
+
+    &:hover {
+        cursor: pointer;
+    }
 }

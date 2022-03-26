@@ -2,7 +2,7 @@ import styles from './Layout.module.scss'
 import Image from 'next/image'
 import { useState, useEffect, useRef } from 'react'
 import { NewEasing, Easing } from '../index.js'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { headingVariants, fadeInVariants } from '../../animations/animations'
 
 export const Layout = () => {
@@ -13,11 +13,9 @@ export const Layout = () => {
     const isMounted = useRef(false)
 
     const addEasing = easingData => {
-        easings ? setEasings([...easings, easingData]) : setEasings([easingData])
+        easings ? setEasings([easingData, ...easings, ]) : setEasings([easingData])
         setShowNewEasing(false)
     }
-
-    console.log(easings);
 
     const deleteEasing = id => {
         const remainingEasings = easings.filter(easing => id !== easing.id)
@@ -31,6 +29,11 @@ export const Layout = () => {
     useEffect(() => {
         if (isMounted.current) {
             localStorage.setItem('easings', JSON.stringify(easings))
+            if (!easings?.length) {
+                setNoEasings(true)
+            } else {
+                setNoEasings(false)
+            }
         } else {
             const localData = localStorage.getItem('easings')
 
@@ -38,12 +41,6 @@ export const Layout = () => {
 
             setEasings(localEasings)
             isMounted.current = true
-        }
-
-        if (!easings?.length) {
-            setNoEasings(true)
-        } else {
-            setNoEasings(false)
         }
 
     }, [easings]);
@@ -54,16 +51,18 @@ export const Layout = () => {
 
     return (
         <div className={styles.container}>
-            <motion.h1 className={`${!noEasings ? styles.smallHeading : ''}`} initial="hidden" animate="visible" variants={headingVariants}>Don&apos;t lose your precious <span>easings</span> ever again</motion.h1>
-            {noEasings && 
-            <motion.div animate="visible" initial="hidden" variants={fadeInVariants} className={styles.image}>
-                <Image src='/illustration.svg' alt='Bench and trees' width={478} height={260} />
-            </motion.div>
-            }
+            <motion.h1 layout className={`${!noEasings ? styles.smallHeading : ''}`} initial="hidden" animate="visible" transition={headingVariants.transition} variants={headingVariants}>Don&apos;t lose your precious <span>easings</span> ever again</motion.h1>
+            <AnimatePresence>
+                {noEasings &&
+                <motion.div className={styles.image} layout animate="visible" initial="hidden" exit="exit" variants={fadeInVariants}>
+                    <Image src='/illustration.svg' alt='Bench and trees' width={478} height={260} />
+                </motion.div>
+                }
+            </AnimatePresence>
             {!noEasings && 
-                <div className={styles.btnWrapper}><button onClick={() => setShowNewEasing(true)} className={styles.addNew}>Add new</button></div>
+                <motion.div layout className={styles.btnWrapper} animate="visible" initial="hidden" variants={fadeInVariants}><button onClick={() => setShowNewEasing(true)} className={styles.addNew}>Add new</button></motion.div>
             }
-            {(noEasings | showNewEasing) ? <NewEasing hidePopup={hidePopup} popup={(showNewEasing)} addEasing={addEasing} /> : null}
+            <AnimatePresence>{(noEasings | showNewEasing) ? <NewEasing hidePopup={hidePopup} popup={(showNewEasing)} addEasing={addEasing} /> : null}</AnimatePresence>
             {renderEasings}
         </div>
     );
