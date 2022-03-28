@@ -17,7 +17,7 @@ export const headingVariants = {
   },
   transition: {
     layout: {
-      duration: 0.35,
+      duration: 0.7,
       type: 'easeOut',
     },
   },

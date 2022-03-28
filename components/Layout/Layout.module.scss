@@ -14,6 +14,7 @@
         font-family: 'Encode Sans', sans-serif;
         font-size: 4rem;
         margin-inline: auto;
+        max-width: 20ch;
 
         & span {
             background-image: linear-gradient(90deg, #7EFCC4, #AAB2FF, #ECA0FF);
@@ -24,7 +25,6 @@
 
     & .smallHeading {
         font-size: 3rem;
-        max-width: 20ch;
     }
 }
 
