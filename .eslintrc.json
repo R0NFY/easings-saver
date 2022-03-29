@@ -31,6 +31,8 @@
     }
   },
   "rules": {
+    // disable rules from base configurations
+    "linebreak-style": "off", 
     "semi": ["error", "never"],
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }], 
     "react/react-in-jsx-scope": "off", 
