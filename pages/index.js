@@ -9,7 +9,7 @@ export default function Home() {
     <>
       <Head>
         <title>Easings saver</title>
-        <meta name="description" content="A safe place to keep your cubic bezier functions" />
+        <meta name="description" content="A safe place to keep cubic bezier functions" />
         <link rel="icon" href="/favicon.svg" />
       </Head>
       <Inspect>
