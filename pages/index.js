@@ -1,7 +1,7 @@
 /* eslint-disable linebreak-style */
 import Head from 'next/head'
 import Inspect from 'inspx'
-import NavBar from '../components/Navbar/NavBar'
+import NavBar from '../components/Navbar/Navbar'
 import Layout from '../components/Layout/Layout'
 
 export default function Home() {

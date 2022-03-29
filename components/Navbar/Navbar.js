@@ -5,7 +5,7 @@ import {
   GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut,
 } from 'firebase/auth'
 import { auth } from '../../utils/firebase'
-import styles from './NavBar.module.scss'
+import styles from './Navbar.module.scss'
 import { fadeInVariants } from '../../animations/animations'
 
 function NavBar() {
