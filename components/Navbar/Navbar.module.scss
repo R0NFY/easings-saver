@@ -5,6 +5,8 @@
     display: flex;
     justify-content: flex-end;
     font-size: 18px;
+    height: 40px;
+    align-items: center;
 }
 
 .google {
@@ -12,7 +14,12 @@
     padding: 0.45em 1em;
     box-shadow: 0px 4px 12px 0px rgba(51, 51, 51, 0.1);
     display: flex;
+    align-items: center;
     position: relative;
+    outline: none;
+    border: none;
+    background-color: white;
+    font: inherit;
 
     &::after {
         content: '';
@@ -24,12 +31,33 @@
         box-shadow: 0px 4px 26px 2px rgba(51, 51, 51, 0.05);
     }
 
+    &:hover {
+        cursor: pointer;
+    }
+
     &:hover::after {
         opacity: 1;
     }
 
     &>p {
         margin-left: 0.55em;
+    }
+}
+
+.userName {
+    font-weight: 500;
+    margin-right: 1rem;
+}
+
+.signOut {
+    border: none;
+    outline: none;
+    font: inherit;
+    background-color: transparent;
+    text-decoration: underline;
+
+    &:hover {
+        cursor: pointer;
     }
 }
 
