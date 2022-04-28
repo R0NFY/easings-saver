@@ -72,29 +72,6 @@ function Layout() {
     }
   }, [easings])
 
-  // useEffect(() => {
-  //   console.log(isSignedIn)
-  //   // if (isMounted.current) {
-  //   //   localStorage.setItem('easings', JSON.stringify(easings))
-  //   //   if (!easings?.length) {
-  //   //     setNoEasings(true)
-  //   //   } else {
-  //   //     setNoEasings(false)
-  //   //   }
-  //   //   console.log(auth.currentUser)
-  //   // } else {
-  //   //   const localData = localStorage.getItem('easings')
-
-  //   //   const localEasings = JSON.parse(localData)
-
-  //   //   setEasings(localEasings)
-  //   //   isMounted.current = true
-  //   // }
-  //   // if (easings && auth.currentUser) {
-  //   //   updateEasings(auth.currentUser.uid, easings)
-  //   // }
-  // }, [easings])
-
   // eslint-disable-next-line max-len
   const renderEasings = easings && easings.map((easing) => <Easing title={easing.title} propCords={easing.cords} id={easing.id} key={easing.id} deleteEasing={deleteEasing} />)
 
